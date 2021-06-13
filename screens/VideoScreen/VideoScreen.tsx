@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, Image, SafeAreaView, ScrollView, FlatList } from 'react-native'
+import { View, Text, Image, SafeAreaView, FlatList } from 'react-native'
 import video from '../../assets/data/video.json'
 import styles from "./styles"
-import { AntDesign, Ionicons, MaterialIcons } from '@expo/vector-icons';
 import VideoListItem from '../../components/VideoListItem'
 import videoitems from '../../assets/data/videos.json';
-
+import ActionComponents from '../../components/VideoScreen/ActionComponents'
+import VideoPlayer from '../../components/VideoScreen/VideoPlayer'
 function VideoScreen() {
     return (
         <View style={{backgroundColor:"#141414", flex:1}}>
@@ -16,34 +16,7 @@ function VideoScreen() {
                 <Text style={styles.subTitle}>{video.user.name} {video.views} {video.createdAt}</Text>
             </View>
             {/* Action Buttons */}
-            <View style={styles.actionListContainer}>
-                <ScrollView horizontal >
-                    <View style={styles.actionListItem}>
-                        <AntDesign name="like1" size={20} color="lightgrey" />
-                        <Text style={styles.actionText}>{video.likes}</Text>
-                    </View>
-                    <View style={styles.actionListItem}>
-                        <AntDesign name="dislike2" size={20} color="lightgrey" />
-                        <Text style={styles.actionText}>{video.dislikes}</Text>
-                    </View>
-                    <View style={styles.actionListItem}>
-                        <MaterialIcons name="online-prediction" size={24} color="lightgrey" />
-                        <Text style={styles.actionText}>live</Text>
-                    </View>
-                    <View style={styles.actionListItem}>
-                        <AntDesign name="sharealt" size={20} color="lightgrey" />
-                        <Text style={styles.actionText}>share</Text>
-                    </View>
-                    <View style={styles.actionListItem}>
-                        <AntDesign name="clouddownload" size={20} color="lightgrey" />
-                        <Text style={styles.actionText}>download</Text>
-                    </View>
-                    <View style={styles.actionListItem}>
-                    <Ionicons name="add-circle" size={20} color="lightgrey" />
-                        <Text style={styles.actionText}>save</Text>
-                    </View>
-                </ScrollView>
-            </View>
+           <ActionComponents/>
             {/* Youtuber's Details */}
             <View style={styles.userContainer}>
                 <Image source={{uri: video.user.image}} style={styles.avatar}/>
@@ -72,7 +45,7 @@ const VideoScreenWithRecommendations=()=>{
     return(
         <SafeAreaView style={{backgroundColor:"#141414", flex:1}}>
             {/* Video Area */}
-            <Image style={styles.videoPlayer} source={{uri:video.thumbnail}}/>
+            <VideoPlayer videoURI={video.videoUrl} thumbnailURI={video.thumbnail}/>
             {/*Recommended Videos  */}
             <FlatList
                 data={videoitems}

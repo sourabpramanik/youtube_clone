@@ -25,18 +25,7 @@ const styles = StyleSheet.create({
         fontSize:12,
         fontWeight:'500'
     },
-    actionListContainer:{
-       marginVertical: 10,
-    },
-    actionListItem:{
-       justifyContent:"space-around",
-       alignItems:"center",
-       height: 60,
-       width: 70,
-    },
-    actionText:{
-        color: "#fff",
-    },
+    
     userContainer:{
         flexDirection:"row",
         alignItems:"center",
