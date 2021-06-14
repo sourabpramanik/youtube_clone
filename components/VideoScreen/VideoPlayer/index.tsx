@@ -30,8 +30,9 @@ const VideoPlayer = (props: VideoPlayerProps) => {
                     resizeMode:"cover"
                 }}
                 resizeMode="contain"
-                usePoster={true}
+                usePoster={false}
                 useNativeControls={true}
+                shouldPlay={true}
             />
         </View>
     )

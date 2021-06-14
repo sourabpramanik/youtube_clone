@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Foundation, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -22,31 +22,51 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="Home"
+      tabBarOptions={{ 
+        activeTintColor: Colors[colorScheme].tint,
+        labelPosition: 'below-icons'
+          }}>
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <Foundation name="home" size={24} color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Explore"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <Ionicons name="compass-outline" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="New"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <AntDesign name="pluscircle" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Subscriptions"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="subscriptions" size={24} color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="Library"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <MaterialIcons name="video-collection" size={24} color={color} />,
         }}
       />
     </BottomTab.Navigator>
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
+
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
@@ -58,7 +78,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Youtube' }}
       />
     </TabOneStack.Navigator>
   );
