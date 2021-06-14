@@ -70,20 +70,6 @@ const styles = StyleSheet.create({
         color: "#fff",
         fontSize:15,
     },
-    userCommentContainer:{
-        flexDirection:"row",
-        alignItems:"center",
-        padding:10, 
-        marginVertical: 10,
-    },
-    userAvatar:{
-        width: 40,
-        height: 40,
-        borderRadius:20,
-    },
-    comment:{
-        color: "#fff",
-        marginLeft:10,
-    },
+    
 })
 export default styles;
