@@ -3,21 +3,10 @@ import {View, Text, Image, Pressable} from "react-native"
 import styles from './styles';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
+import { Video } from '../../src/models';
 
 type VideoListItemProps={
-video: {
-    id:string;
-    createdAt:string;
-    title:string;
-    thumbnail:string;
-    videoUrl:string;
-    duration:number;
-    views:number;
-    user:{
-        name:string;
-        image?:string;
-    }
-}
+video: Video
 }
 export default function VideoListItem(props: VideoListItemProps) {
     const {video} = props
@@ -49,10 +38,10 @@ export default function VideoListItem(props: VideoListItemProps) {
                 </View>
                 <View style={styles.titleRow}>
                     <Image style={styles.avatar} 
-                    source={{uri:video.user.image}}/>
+                    source={{uri:video.User?.image || "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/biahaze.jpg"}}/>
                     <View style={styles.middleContainer}>
                         <Text style={styles.title}>{video.title}</Text>
-                        <Text style={styles.subTitle}>{video.user.name} {video.views} {video.createdAt}</Text>
+                        <Text style={styles.subTitle}>{video.User?.name} {video.views} {video.createdAt}</Text>
                     </View>
                     <Entypo name="dots-three-vertical" size={15} color="white" />
                 </View>

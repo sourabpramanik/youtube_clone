@@ -1,14 +1,22 @@
 import React from 'react'
 import {View, FlatList} from "react-native"
 import VideoListItem from '../components/VideoListItem'
-import videoitems from '../assets/data/videos.json';
-
+import { DataStore } from 'aws-amplify';
+import { useState, useEffect } from 'react';
+import {Video} from '../src/models'
 
 export default function HomeScreen() {
+    const [videos, setVideos] = useState<Video[]>([])
+
+    useEffect(()=>{
+        //fetch Videos
+       DataStore.query(Video).then(setVideos)
+    }, [videos])
+
     return (
         <View>
             <FlatList
-                data={videoitems}
+                data={videos}
                 renderItem={({item})=><VideoListItem video={item}/>}
             />
         </View>
